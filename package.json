@@ -1,0 +1,52 @@
+{
+  "name": "portal-auto",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "next lint",
+    "production": "npm run build && npm run start",
+    "deploy": "npm run build && npm run start",
+    "pm2:start": "pm2 start ecosystem.config.js --env production",
+    "pm2:stop": "pm2 stop eliteadm",
+    "pm2:restart": "pm2 restart eliteadm",
+    "pm2:status": "pm2 status",
+    "pm2:logs": "pm2 logs eliteadm"
+  },
+  "dependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "@types/bcryptjs": "2.4.6",
+    "@types/jsonwebtoken": "9.0.5",
+    "@types/node": "20.10.5",
+    "@types/react": "18.2.45",
+    "@types/react-dom": "18.2.18",
+    "autoprefixer": "10.4.16",
+    "axios": "^1.11.0",
+    "bcryptjs": "2.4.3",
+    "braces": "^3.0.3",
+    "class-variance-authority": "0.7.0",
+    "clsx": "2.0.0",
+    "fast-glob": "^3.3.3",
+    "fill-range": "^7.1.1",
+    "googleapis": "^155.0.1",
+    "is-number": "^7.0.0",
+    "jsonwebtoken": "9.0.2",
+    "lucide-react": "0.294.0",
+    "micromatch": "^4.0.8",
+    "next": "^15.4.6",
+    "postcss": "8.4.32",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "7.48.2",
+    "tailwind-merge": "^2.2.0",
+    "tailwindcss": "3.3.6",
+    "to-regex-range": "^5.0.1",
+    "typescript": "5.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^9.33.0",
+    "eslint-config-next": "^15.4.6"
+  }
+}
