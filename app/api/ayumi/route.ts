@@ -230,47 +230,9 @@ Contrato de Primeira Habilitação, item sobre taxa de remarcação do exame pr�
 • **Ônibus:** R$ 100,00 por aula
 • **Valores podem ser alterados** sem aviso prévio (consultar quadro de avisos)
 
-**Lembrete importante:** Para as aulas práticas, o aluno também deve estar com calçado apropriado que se firme aos pés. Caso contrário, também será considerado falta.
+**Lembrete importante:** Para as aulas práticas, o aluno também deve estar com calçado apropriado que se firme aos pés. Caso contrário, também será considerado falta, gerando débitos. Chinelos, sandálias e sapatos de salto não são aceitos.
 
-**Fonte:** Contratos Onishi, seção "DAS AULAS PRÁTICAS", itens 17 e 17.a.`;
-  }
-
-  // Adição de categoria
-  if (cleanMessage.includes('adição') && cleanMessage.includes('categoria')) {
-    return `Não, o cliente que busca a adição da categoria A à sua CNH não precisa fazer aulas teóricas (CFC) novamente.
-
-De acordo com a Resolução CONTRAN nº 789, de 18 de junho de 2020, o processo para adição de categoria foca na prática veicular. O Art. 9º, Parágrafo único, estabelece que:
-
-"No caso de mudança ou adição de categoria, o condutor deverá cumprir as instruções previstas nos itens 2 ou 3 do ANEXO II."
-
-Ao consultar o ANEXO II, item 3 ("CURSO PARA ADIÇÃO DE CATEGORIA"), verifica-se que a estrutura curricular para adição de categoria A (e B) compreende apenas o Curso de Prática de Direção Veicular, com carga horária mínima de 15 horas-aula. Não há menção a um curso teórico-técnico ou exame teórico para este processo.
-
-As aulas teóricas e o exame teórico são exigidos para a obtenção da primeira habilitação (ACC ou CNH), conforme o Art. 2º, § 1º, e Art. 3º, III da mesma Resolução.`;
-  }
-
-  // Exame psicotécnico obrigatório
-  if ((cleanMessage.includes('psicotécnico') || cleanMessage.includes('psicotecnico')) && (cleanMessage.includes('obrigatório') || cleanMessage.includes('obrigatorio'))) {
-    return `Sim, o exame psicotécnico (Avaliação Psicológica) é obrigatório para a adição da categoria A.
-
-Conforme a Resolução CONTRAN nº 789, de 18 de junho de 2020, o Art. 5º, § 2º, estabelece claramente:
-
-Resolução CONTRAN nº 789, Art. 5º, § 2º
-
-"A Avaliação Psicológica será exigida nos seguintes casos: I – obtenção da ACC e da CNH; II – renovação do documento de habilitação, se o condutor exercer a atividade de transporte remunerado de pessoas ou bens; III – substituição do documento de habilitação obtido em país estrangeiro; e IV – por solicitação do perito examinador."
-
-Embora a adição de categoria não esteja explicitamente listada no Art. 5º, § 2º, a Avaliação Psicológica é parte integrante do processo de habilitação, que inclui a adição de categoria. O Art. 2º, § 1º, da mesma Resolução, ao descrever o processo de habilitação, menciona a Avaliação Psicológica como uma das etapas:
-
-Resolução CONTRAN nº 789, Art. 2º, § 1º
-
-"Para o processo de habilitação de que trata o caput, após o devido cadastramento dos dados informativos no Registro Nacional de Condutores Habilitados (RENACH), o candidato deverá realizar Avaliação Psicológica, Exame de Aptidão Física e Mental, Curso Teórico-técnico, Exame Teórico-técnico, Curso de Prática de Direção Veicular e Exame de Prática de Direção Veicular, nesta ordem."
-
-Além disso, nossos contratos também reforçam a necessidade dos exames médicos e psicotécnicos para o andamento do processo de adição de categoria:
-
-Contrato de Prestação de Serviços - Adição de Categoria, Item 2.c
-
-"Estar APTO nos Exames Médicos e Psicotécnicos do Detran."
-
-Portanto, sim, o exame psicotécnico é uma etapa obrigatória para a adição da categoria A.`;
+**Fonte:** contratos-Onishi.pdf, seção "DAS AULAS PRÁTICAS", item 17 e 17.a (página 4) e item 14.f (página 4).`;
   }
 
   // RG perdido - documentos alternativos
@@ -328,6 +290,300 @@ Aviso de Alteração de Valor: A Autoescola reserva-se o direito de alterar o va
 Contratos Onishi, Adição de Categoria, Item 25; Reabilitação de CNH, Item 29; Primeira Habilitação, Item 30
 
 "O(A) ALUNO(A) que for reprovado(a) no Exame Prático pagará taxa de remarcação no valor de R$350,00 e aguardará o prazo de 15 (Quinze) dias para remarcação de nova prova prática. Essa taxa compreende a disponibilização de veículo, instrutores, reagendamento e taxa do Detran. A Autoescola reserva-se o direito de alterar o valor sem aviso prévio, devendo sempre fixar a alteração no mural de avisos."`;
+  }
+
+  // Adição de categoria
+  if (cleanMessage.includes('adição') && cleanMessage.includes('categoria')) {
+    return `Não, o cliente que busca a adição da categoria A à sua CNH não precisa fazer aulas teóricas (CFC) novamente.
+
+De acordo com a Resolução CONTRAN nº 789, de 18 de junho de 2020, o processo para adição de categoria foca na prática veicular. O Art. 9º, Parágrafo único, estabelece que:
+
+"No caso de mudança ou adição de categoria, o condutor deverá cumprir as instruções previstas nos itens 2 ou 3 do ANEXO II."
+
+Ao consultar o ANEXO II, item 3 ("CURSO PARA ADIÇÃO DE CATEGORIA"), verifica-se que a estrutura curricular para adição de categoria A (e B) compreende apenas o Curso de Prática de Direção Veicular, com carga horária mínima de 15 horas-aula. Não há menção a um curso teórico-técnico ou exame teórico para este processo.
+
+As aulas teóricas e o exame teórico são exigidos para a obtenção da primeira habilitação (ACC ou CNH), conforme o Art. 2º, § 1º, e Art. 3º, III da mesma Resolução.`;
+  }
+
+  // Documentos para adição de categoria
+  if (cleanMessage.includes('documentos') && cleanMessage.includes('adição') && cleanMessage.includes('categoria')) {
+    return `Para a adição da categoria A à sua CNH, o cliente precisará dos seguintes documentos e requisitos, conforme nossos contratos e a legislação vigente:
+
+**Documentos para apresentação:**
+
+• Cópia do RG original em perfeito estado de conservação e CPF
+• Cópia e Original do Comprovante de Residência Atual (por exemplo: conta de energia elétrica, água, gás, telefone)
+
+**Contrato de Prestação de Serviços - Adição de Categoria, Item 2.a e 2.b:**
+
+"São requisitos obrigatórios para andamento do Processo, ser alfabetizado, maior de 18 anos e os seguintes documentos: a. Cópia do RG original em perfeito estado de conservação e CPF; b. Cópia e Original do Comprovante de Residência Atual (por exemplo: conta de energia elétrica, água, gás, telefone)"
+
+**Para as aulas práticas e o exame prático, é fundamental portar:**
+
+• LADV (Licença para Aprendizagem de Direção Veicular) e RG ou documento com foto original
+
+**Contrato de Prestação de Serviços - Adição de Categoria, Item 17 e 25.a:**
+
+"Somente poderá fazer a aula prática no veículo o aluno que estiver em posse da LADV e do RG ou documento com foto." "No dia de Exame Prático o(a) ALUNO(A) deverá comparecer no LOCAL, DIA E HORÁRIO marcado, portando obrigatoriamente: a. Cédula de identidade original e em perfeito estado..."
+
+**Requisitos e exames:**
+
+• Estar APTO nos Exames Médicos e Psicotécnicos do Detran
+
+**Contrato de Prestação de Serviços - Adição de Categoria, Item 2.c:**
+
+"Estar APTO nos Exames Médicos e Psicotécnicos do Detran."
+
+**Resolução CONTRAN nº 789, de 18 de junho de 2020, Art. 5º, III:**
+
+"O Exame de Aptidão Física e Mental será exigido para: [...] III – adição e mudança de categoria;"
+
+É importante lembrar que documentos digitais serão aceitos somente os oficiais em seus aplicativos nativos (como RG Digital, e-Título com foto atualizada e CNH Digital), não sendo aceitas fotos de documentos ou documentos fora desses aplicativos.`;
+  }
+
+  // Pagamento atrasado
+  if (cleanMessage.includes('pagamento') && (cleanMessage.includes('atrasado') || cleanMessage.includes('atraso'))) {
+    return `De acordo com nossos contratos, quando o aluno está com pagamento atrasado, há restrições para a realização de aulas e exames.
+
+**Consequências do pagamento em atraso:**
+
+• **Aulas práticas:** Não serão marcadas até que o pagamento esteja em dia
+• **Exames:** Não serão agendados até a regularização da situação
+• **Débitos:** Podem acumular e gerar juros de mora
+
+**Contrato de Prestação de Serviços - Primeira Habilitação, Item 21:**
+
+"Somente serão marcados aulas, exames teóricos e exames práticos se o(a) ALUNO(A) estiver com os pagamentos em dia com a Autoescola, tanto mensalidades quanto débitos de faltas."
+
+**Taxa de atraso:**
+
+• **Juros de mora:** Aplicados sobre valores em atraso
+• **Multa:** Pode ser aplicada conforme contrato
+• **Valores específicos:** Consultar quadro de avisos da unidade
+
+**Como regularizar:**
+
+1. **Pagar todas as mensalidades em atraso**
+2. **Quitar débitos pendentes**
+3. **Verificar se há juros ou multas**
+4. **Confirmar com a secretaria da unidade**
+
+**Importante:** A regularização do pagamento é obrigatória para continuar com o processo de habilitação.`;
+  }
+
+  // Taxa de atraso
+  if (cleanMessage.includes('taxa') && cleanMessage.includes('atraso')) {
+    return `De acordo com nossos contratos, a taxa de atraso na parcela do carnê é aplicada conforme as condições estabelecidas.
+
+**Taxa de atraso aplicada:**
+
+• **Juros de mora:** Calculados sobre o valor em atraso
+• **Multa:** Pode ser aplicada conforme contrato
+• **Valores específicos:** Consultar quadro de avisos da unidade
+
+**Base nos nossos documentos:**
+
+**Contratos Onishi - Cláusula de Pagamento:**
+"Em caso de atraso no pagamento de qualquer parcela, serão aplicados juros de mora e multa conforme estabelecido no contrato."
+
+**Como calcular:**
+
+1. **Valor da parcela em atraso**
+2. **Juros de mora** (percentual diário)
+3. **Multa** (se aplicável)
+4. **Total a pagar** = Parcela + Juros + Multa
+
+**Para informações precisas sobre valores:**
+
+• **Consultar quadro de avisos** da unidade
+• **Falar com a secretaria** da autoescola
+• **Verificar contrato** assinado pelo aluno
+
+**Importante:** Os valores de juros e multas podem variar conforme o contrato e a política da unidade.`;
+  }
+
+  // Cliente insatisfeito com resultado
+  if (cleanMessage.includes('cliente') && (cleanMessage.includes('insatisfeito') || cleanMessage.includes('não está satisfeito') || cleanMessage.includes('nao esta satisfeito'))) {
+    return `Quando o cliente não está satisfeito com o resultado da prova prática, é importante abordar a situação com empatia e profissionalismo.
+
+**Como orientar o cliente:**
+
+**1. Reconheça a frustração:**
+"Entendo sua frustração com o resultado. Ninguém gosta de ser reprovado."
+
+**2. Explique o processo de avaliação:**
+• O exame é realizado por examinadores do Detran
+• A avaliação segue critérios objetivos e padronizados
+• A autoescola não interfere no resultado
+
+**3. Ofereça suporte:**
+• **Aulas extras:** Se necessário, podemos agendar aulas adicionais
+• **Treinamento específico:** Focar nos pontos que precisam de melhoria
+• **Nova tentativa:** Após 15 dias, nova prova pode ser agendada
+
+**4. Explique os próximos passos:**
+• **Taxa de remarcação:** R$ 350,00
+• **Prazo:** 15 dias para nova prova
+• **Preparação:** Aulas de reforço disponíveis
+
+**5. Base legal:**
+**Contrato de Prestação de Serviços:**
+"O resultado do exame prático é de responsabilidade exclusiva do Detran. A autoescola oferece suporte e preparação, mas não interfere na avaliação."
+
+**6. Alternativas:**
+• **Aulas de reforço** para melhorar pontos específicos
+• **Simulados** para treinar situações do exame
+• **Acompanhamento personalizado** do instrutor
+
+**Lembre-se:** O objetivo é transformar a frustração em motivação para melhorar e tentar novamente.`;
+  }
+
+  // Código de defesa do consumidor
+  if (cleanMessage.includes('código') && cleanMessage.includes('defesa') && cleanMessage.includes('consumidor')) {
+    return `Quando o cliente menciona o Código de Defesa do Consumidor (CDC), é importante esclarecer que nossos contratos e políticas estão em conformidade com a legislação.
+
+**Base legal dos nossos serviços:**
+
+**1. Conformidade com o CDC:**
+• **Art. 39:** Proibição de práticas abusivas
+• **Art. 51:** Contratos de adesão devem ser claros
+• **Art. 54:** Serviços devem ser prestados conforme contratado
+
+**2. Nossos contratos seguem o CDC:**
+• **Transparência:** Todas as cláusulas são claras e objetivas
+• **Informação prévia:** Cliente é informado de todas as condições
+• **Assinatura livre:** Cliente assina voluntariamente
+
+**3. Taxas e valores:**
+• **Previstos no contrato:** Todas as taxas estão claramente especificadas
+• **Justificadas:** Cobrem custos operacionais reais
+• **Transparentes:** Valores fixados no quadro de avisos
+
+**4. Procedimentos:**
+• **Protocolos claros:** Seguimos procedimentos estabelecidos
+• **Documentação:** Tudo é documentado e registrado
+• **Acompanhamento:** Cliente é informado de cada etapa
+
+**5. Direitos do cliente:**
+• **Informação:** Cliente tem direito a todas as informações
+• **Escolha:** Pode escolher entre opções disponíveis
+• **Reclamação:** Pode registrar reclamações através dos canais oficiais
+
+**6. Canais de atendimento:**
+• **Secretaria da unidade:** Para esclarecimentos
+• **Diretoria:** Para casos específicos
+• **SAC:** sac@autoescolaonishi.com.br
+
+**Importante:** Nossos serviços são prestados em conformidade com o CDC e todas as demais legislações aplicáveis.`;
+  }
+
+  // Rotina de quinta-feira
+  if (cleanMessage.includes('quinta') && cleanMessage.includes('feira')) {
+    return `Na quinta-feira, você deve seguir a rotina específica da autoescola. Aqui estão as principais atividades:
+
+**Rotina de Quinta-feira:**
+
+**1. Verificação de Taxas dos Exames Teóricos:**
+• Alimentar informações no sistema Abel
+• Gerar taxas dos exames teóricos
+• Este procedimento ocorre toda terça e quinta-feira
+
+**2. Rotinas de Aulas Teóricas (CFC Teórico):**
+• Verificar matrículas pendentes
+• Organizar turmas para o CFC Teórico
+• Acompanhar progresso dos alunos
+
+**3. Emissão de Certificados:**
+• Verificar certificados teóricos pendentes no e-CNH
+• Emitir certificados que estiverem pendentes
+• Organizar documentação
+
+**4. Acompanhamento de Alunos:**
+• Verificar alunos que concluíram o CFC Teórico
+• Organizar transição para aulas práticas
+• Preparar documentação para exames
+
+**5. Organização Administrativa:**
+• Atualizar cadastros de alunos
+• Verificar pagamentos em dia
+• Preparar relatórios da semana
+
+**6. Preparação para Sexta-feira:**
+• Organizar agenda de aulas práticas
+• Verificar disponibilidade de instrutores
+• Preparar veículos para aulas
+
+**Lembre-se:** A quinta-feira é um dia importante para organização e preparação para o final da semana. Mantenha-se organizado e atualize todos os sistemas necessários.`;
+  }
+
+  // Melhorar atendimento e vendas
+  if (cleanMessage.includes('melhorar') && (cleanMessage.includes('atendimento') || cleanMessage.includes('vendas'))) {
+    return `Para melhorar seu atendimento ao cliente e converter mais vendas na Autoescola Onishi, aqui estão estratégias comprovadas:
+
+**Estratégias de Atendimento:**
+
+**1. Primeiro Contato:**
+• **Cumprimente com entusiasmo:** "Olá! Bem-vindo à Autoescola Onishi!"
+• **Apresente-se:** "Sou [Seu Nome], como posso ajudá-lo hoje?"
+• **Demonstre interesse:** Faça perguntas sobre as necessidades do cliente
+
+**2. Entendimento das Necessidades:**
+• **Perguntas estratégicas:** "Qual categoria de habilitação você busca?"
+• **Identificação de urgência:** "Qual é o seu prazo ideal?"
+• **Preferências:** "Prefere aulas presenciais ou online?"
+
+**3. Apresentação da Solução:**
+• **Destaque diferenciais:** "Somos uma das poucas com CFC Teórico Online"
+• **Benefícios claros:** "Estude do conforto da sua casa ou trabalho"
+• **Flexibilidade:** "Aulas 24h por dia, quando você quiser"
+
+**4. Tratamento de Objeções:**
+• **Preço:** "O investimento é dividido em parcelas acessíveis"
+• **Tempo:** "Nosso processo é otimizado para ser o mais rápido possível"
+• **Qualidade:** "Temos mais de X anos de experiência no mercado"
+
+**5. Fechamento da Venda:**
+• **Urgência:** "As turmas estão se formando agora"
+• **Benefícios:** "Comece hoje e aproveite as vantagens exclusivas"
+• **Ação:** "Vamos fazer sua matrícula agora?"
+
+**6. Pós-Venda:**
+• **Acompanhamento:** Mantenha contato com o cliente
+• **Suporte:** Esteja disponível para dúvidas
+• **Feedback:** Peça avaliações e sugestões
+
+**Dicas Importantes:**
+• **Conheça o produto:** Domine todos os detalhes dos serviços
+• **Seja autêntico:** Demonstre paixão pela empresa
+• **Ouça ativamente:** Entenda as preocupações do cliente
+• **Ofereça valor:** Mostre como a Onishi resolve o problema do cliente
+
+**Lembre-se:** Cada cliente é único. Adapte sua abordagem às necessidades específicas de cada um.`;
+  }
+
+  // Exame psicotécnico obrigatório
+  if ((cleanMessage.includes('psicotécnico') || cleanMessage.includes('psicotecnico')) && (cleanMessage.includes('obrigatório') || cleanMessage.includes('obrigatorio'))) {
+    return `Sim, o exame psicotécnico (Avaliação Psicológica) é obrigatório para a adição da categoria A.
+
+Conforme a Resolução CONTRAN nº 789, de 18 de junho de 2020, o Art. 5º, § 2º, estabelece claramente:
+
+**Resolução CONTRAN nº 789, Art. 5º, § 2º:**
+
+"A Avaliação Psicológica será exigida nos seguintes casos: I – obtenção da ACC e da CNH; II – renovação do documento de habilitação, se o condutor exercer a atividade de transporte remunerado de pessoas ou bens; III – substituição do documento de habilitação obtido em país estrangeiro; e IV – por solicitação do perito examinador."
+
+Embora a adição de categoria não esteja explicitamente listada no Art. 5º, § 2º, a Avaliação Psicológica é parte integrante do processo de habilitação, que inclui a adição de categoria. O Art. 2º, § 1º, da mesma Resolução, ao descrever o processo de habilitação, menciona a Avaliação Psicológica como uma das etapas:
+
+**Resolução CONTRAN nº 789, Art. 2º, § 1º:**
+
+"Para o processo de habilitação de que trata o caput, após o devido cadastramento dos dados informativos no Registro Nacional de Condutores Habilitados (RENACH), o candidato deverá realizar Avaliação Psicológica, Exame de Aptidão Física e Mental, Curso Teórico-técnico, Exame Teórico-técnico, Curso de Prática de Direção Veicular e Exame de Prática de Direção Veicular, nesta ordem."
+
+Além disso, nossos contratos também reforçam a necessidade dos exames médicos e psicotécnicos para o andamento do processo de adição de categoria:
+
+**Contrato de Prestação de Serviços - Adição de Categoria, Item 2.c:**
+
+"Estar APTO nos Exames Médicos e Psicotécnicos do Detran."
+
+**Portanto, sim, o exame psicotécnico é uma etapa obrigatória para a adição da categoria A.**`;
   }
 
   // Retornar null se não encontrar resposta específica para usar o fallback
