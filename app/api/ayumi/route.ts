@@ -96,17 +96,27 @@ Contratos Onishi, Adição de Categoria, Item 14.g; Reabilitação de CNH, Item 
 
 "Para as aulas práticas, será feito sempre 2 agendamentos por vez (4 aulas), sempre de acordo com a disponibilidade da agenda da autoescola. Após realizar esses 2 agendamentos, o Aluno(a) agenda mais 2 dias (4 aulas) e assim sucessivamente."
 
-Isso significa que o aluno pode agendar 2 agendamentos por vez, totalizando 4 aulas. Após a realização dessas aulas, ele poderá agendar as próximas 4, e assim por diante, sempre respeitando a disponibilidade da agenda da autoescola.
+Isso significa que o aluno pode agendar 2 agendamentos por vez, totalizando 4 aulas. Após a realização dessas aulas, ele poderá agendar as próximas 4, e assim por diante, sempre respeitando a disponibilidade da agenda da autoescola.`;
+  }
 
-É importante ressaltar que, conforme a Resolução CONTRAN nº 789, de 18 de junho de 2020, a carga horária mínima de aulas práticas varia de acordo com a categoria:
+  // Agendar todas as aulas de uma vez
+  if (cleanMessage.includes('todas') && cleanMessage.includes('aulas') && (cleanMessage.includes('uma vez') || cleanMessage.includes('vez') || cleanMessage.includes('só'))) {
+    return `Entendo perfeitamente o seu desejo de agendar todas as aulas práticas de uma vez para se organizar. No entanto, de acordo com os nossos protocolos e para garantir a qualidade e a disponibilidade para todos os alunos, não é possível agendar todas as aulas práticas de uma só vez.
 
-Resolução CONTRAN nº 789, Art. 13
+Nosso sistema de agendamento é planejado para otimizar a agenda da autoescola e assegurar que todos os alunos tenham acesso justo às aulas.
 
-Obtenção ou adição da ACC: mínimo de 5 horas/aula.
-Obtenção da CNH na categoria "A" ou "B": mínimo de 20 horas/aula.
-Adição da categoria "A" ou "B" na CNH: mínimo de 15 horas/aula.
+Como funciona o agendamento:
 
-Portanto, o contrato estabelece a forma de agendamento (quantas aulas podem ser marcadas por vez), enquanto a Resolução CONTRAN define a carga horária total mínima que o aluno precisa cumprir.`;
+• As aulas práticas são agendadas sempre em pares (equivalente a 4 aulas) por vez
+• Após a realização desses dois agendamentos, você poderá agendar mais dois dias (totalizando mais 4 aulas) e assim sucessivamente
+• O agendamento é feito de acordo com a disponibilidade da agenda da autoescola
+
+Essa metodologia garante que todos os alunos ativos no processo tenham acesso às aulas de forma contínua e justa.
+
+Base nos nossos documentos:
+O contrato de "PRIMEIRA HABILITAÇÃO" detalha: "Para as aulas práticas, será feito sempre 2 agendamentos por vez (4 aulas), sempre de acordo com a disponibilidade da agenda da autoescola. Após realizar esses 2 agendamentos, o Aluno(a) agenda mais 2 dias (4 aulas) e assim sucessivamente."
+
+Nosso objetivo é sempre priorizar o atendimento de todos os nossos alunos, cada um em seu processo de habilitação, conforme a disponibilidade da agenda da autoescola.`;
   }
 
   // Adição de categoria
