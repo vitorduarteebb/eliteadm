@@ -1,7 +1,7 @@
 'use client';
 
 import { UserManagement } from '@/components/UserManagement';
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth } from '@/lib/context/AuthContext';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import { LogOut, Home, ArrowLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';

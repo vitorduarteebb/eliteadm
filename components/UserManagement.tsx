@@ -13,7 +13,7 @@ import {
   CheckCircle,
   XCircle
 } from 'lucide-react';
-import { User as UserType } from '../hooks/useAuth';
+import { User as UserType } from '../lib/context/AuthContext';
 import { DEFAULT_ROLES } from '../lib/permissions';
 
 interface UserManagementProps {

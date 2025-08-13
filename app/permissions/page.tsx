@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../lib/context/AuthContext';
 import { ProtectedRoute } from '../../components/ProtectedRoute';
 import { PermissionsManagement } from '../../components/PermissionsManagement';
 import { AyumiRulesManagement } from '../../components/AyumiRulesManagement';

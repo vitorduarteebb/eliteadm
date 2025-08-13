@@ -1,7 +1,7 @@
 'use client';
 
 import { AyumiInterface } from '@/components/AyumiInterface';
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth } from '@/lib/context/AuthContext';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import { LogOut, ArrowLeft, Users, Shield } from 'lucide-react';
 import { useRouter } from 'next/navigation';
