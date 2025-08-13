@@ -149,7 +149,7 @@ Nosso objetivo é sempre priorizar o atendimento de todos os nossos alunos, cada
   }
 
   // Exame médico e psicotécnico
-  if (cleanMessage.includes('médico') || cleanMessage.includes('psicotécnico') || cleanMessage.includes('exame') && (cleanMessage.includes('médico') || cleanMessage.includes('psicotécnico'))) {
+  if (cleanMessage.includes('médico') || cleanMessage.includes('medico') || cleanMessage.includes('psicotécnico') || cleanMessage.includes('psicotecnico') || (cleanMessage.includes('exame') && (cleanMessage.includes('médico') || cleanMessage.includes('medico') || cleanMessage.includes('psicotécnico') || cleanMessage.includes('psicotecnico')))) {
     return `De acordo com nossos contratos, a Autoescola Onishi não tem qualquer interferência no atendimento, horários e resultados das Clínicas Médicas credenciadas pelo Detran.
 
 **Como funciona:**
@@ -230,7 +230,7 @@ As aulas teóricas e o exame teórico são exigidos para a obtenção da primeir
   }
 
   // Exame psicotécnico obrigatório
-  if (cleanMessage.includes('psicotécnico') && cleanMessage.includes('obrigatório')) {
+  if ((cleanMessage.includes('psicotécnico') || cleanMessage.includes('psicotecnico')) && (cleanMessage.includes('obrigatório') || cleanMessage.includes('obrigatorio'))) {
     return `Sim, o exame psicotécnico (Avaliação Psicológica) é obrigatório para a adição da categoria A.
 
 Conforme a Resolução CONTRAN nº 789, de 18 de junho de 2020, o Art. 5º, § 2º, estabelece claramente:
