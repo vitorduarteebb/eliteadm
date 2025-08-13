@@ -11,7 +11,7 @@ import {
   Plus, 
   Save, 
   X,
-  Check,
+  Check, 
   AlertTriangle,
   Lock,
   Unlock,
@@ -220,7 +220,7 @@ export function PermissionManager() {
     }
   };
 
-  return (
+    return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 p-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -231,14 +231,14 @@ export function PermissionManager() {
               <p className="text-gray-600">Configure regras de acesso e permissões do sistema</p>
             </div>
             <div className="flex space-x-3">
-              <Button
+            <Button 
                 onClick={() => setShowCreateRole(true)}
                 className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition-colors"
-              >
+            >
                 <Plus className="h-5 w-5 mr-2" />
                 Novo Papel
-              </Button>
-              <Button
+            </Button>
+            <Button 
                 onClick={() => setShowAdvancedSettings(!showAdvancedSettings)}
                 variant="outline"
                 className="px-6 py-2 rounded-lg"
@@ -282,7 +282,7 @@ export function PermissionManager() {
                 setSearchTerm('');
                 setCategoryFilter('all');
               }}
-              variant="outline"
+              variant="outline" 
               className="w-full"
             >
               <Filter className="h-4 w-4 mr-2" />
@@ -383,9 +383,9 @@ export function PermissionManager() {
                       </span>
                     )}
                   </div>
-                </div>
+          </div>
 
-                <div className="space-y-6">
+          <div className="space-y-6">
                   {Object.entries(permissionGroups)
                     .filter(([category]) => categoryFilter === 'all' || category === categoryFilter)
                     .map(([category, categoryPermissions]) => {
@@ -403,8 +403,8 @@ export function PermissionManager() {
                             <h4 className="font-semibold flex items-center">
                               {getCategoryIcon(category)} {category.charAt(0).toUpperCase() + category.slice(1)}
                             </h4>
-                          </div>
-                          
+                </div>
+                
                           <div className="p-4 space-y-3">
                             {filteredPermissions.map((permission) => {
                               const isGranted = getPermissionStatus(permission.id, selectedRole.id);
@@ -412,14 +412,14 @@ export function PermissionManager() {
                               const dependencyMet = getDependencyStatus(permission, selectedRole.id);
 
                               return (
-                                <div
-                                  key={permission.id}
+                    <div 
+                      key={permission.id} 
                                   className={`p-3 rounded-lg border ${
                                     isGranted ? 'border-green-200 bg-green-50' : 'border-gray-200'
                                   } ${!canGrant ? 'opacity-50' : ''}`}
                                 >
                                   <div className="flex items-start justify-between">
-                                    <div className="flex-1">
+                      <div className="flex-1">
                                       <div className="flex items-center space-x-2">
                                         <h5 className="font-medium text-gray-900">{permission.name}</h5>
                                         {permission.required && (
@@ -439,9 +439,9 @@ export function PermissionManager() {
                                           Depende de: {permission.dependencies.join(', ')}
                                         </p>
                                       )}
-                                    </div>
+                      </div>
                                     
-                                    <div className="ml-4">
+                      <div className="ml-4">
                                       <label className="flex items-center">
                                         <input
                                           type="checkbox"
@@ -468,9 +468,9 @@ export function PermissionManager() {
                 <h3 className="text-lg font-medium text-gray-900 mb-2">Selecione um Papel</h3>
                 <p className="text-gray-500">Escolha um papel na lista ao lado para gerenciar suas permissões</p>
               </div>
-            )}
-          </div>
-        </div>
+                        )}
+                      </div>
+                    </div>
 
         {/* Estatísticas */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
@@ -525,8 +525,8 @@ export function PermissionManager() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+                </div>
+              </div>
 
       {/* Modal de Criação/Edição de Papel */}
       {(showCreateRole || editingRole) && (
@@ -544,7 +544,7 @@ export function PermissionManager() {
               }}
             />
           </div>
-        </div>
+          </div>
       )}
     </div>
   );

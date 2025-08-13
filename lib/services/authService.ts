@@ -1,6 +1,7 @@
 import { User, LoginCredentials, RegisterData } from '@/lib/types/auth';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
+// Forçar uso de API local - URLs relativas
+const API_BASE_URL = '/api';
 
 interface AuthResponse {
   user: User;

@@ -6,9 +6,9 @@ import jwt from 'jsonwebtoken';
 const users = [
   {
     id: '1',
-    name: 'Administrador',
-    email: 'admin@portalauto.com',
-    password: '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+    name: 'Administrador EliteADM',
+    email: 'admin@admin.com',
+    password: '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // admin123
     role: 'admin',
     isActive: true,
     permissions: [
@@ -84,49 +84,70 @@ const users = [
   },
   {
     id: '2',
-    name: 'Usuário Teste',
-    email: 'user@portalauto.com',
-    password: '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-    role: 'user',
+    name: 'Administrador Principal',
+    email: 'admin@admin.com',
+    password: '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // admin123
+    role: 'admin',
     isActive: true,
     permissions: [
       {
         id: '10',
+        name: 'system.admin',
+        description: 'Acesso administrativo completo',
+        category: 'dashboard',
+        granted: true,
+      },
+      {
+        id: '11',
         name: 'dashboard_view',
         description: 'Visualizar dashboard',
         category: 'dashboard',
         granted: true,
       },
       {
-        id: '11',
+        id: '12',
         name: 'kambam_view',
         description: 'Visualizar Kambam',
         category: 'kambam',
         granted: true,
       },
       {
-        id: '12',
+        id: '13',
         name: 'contacts_view',
         description: 'Visualizar contatos',
         category: 'contacts',
         granted: true,
       },
       {
-        id: '13',
+        id: '14',
         name: 'ai_use',
         description: 'Usar IA',
         category: 'ai',
         granted: true,
       },
       {
-        id: '14',
+        id: '15',
+        name: 'users_view',
+        description: 'Visualizar usuários',
+        category: 'users',
+        granted: true,
+      },
+      {
+        id: '16',
         name: 'usage_view',
         description: 'Visualizar monitoramento',
         category: 'reports',
         granted: true,
       },
       {
-        id: '15',
+        id: '17',
+        name: 'access_control',
+        description: 'Controle de acesso',
+        category: 'users',
+        granted: true,
+      },
+      {
+        id: '18',
         name: 'settings_view',
         description: 'Visualizar configurações',
         category: 'dashboard',

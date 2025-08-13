@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../lib/context/AuthContext';
 import { Shield, Eye, EyeOff, AlertCircle } from 'lucide-react';
 
 export default function LoginPage() {
@@ -35,7 +35,10 @@ export default function LoginPage() {
             isActive: true,
             permissions: ['system.admin', 'dashboard_view', 'users_view', 'ai_use'],
             createdAt: new Date().toISOString(),
-            lastLogin: null
+            lastLogin: null,
+            aiUsageLimit: 1000,
+            aiUsageCount: 0,
+            aiUsageResetDate: new Date().toISOString()
           };
           
           existingUsers.push(adminUser);
@@ -62,7 +65,7 @@ export default function LoginPage() {
     setIsLoading(true);
 
     try {
-      const success = await login(email, password);
+      const success = await login({ email, password });
       
       if (success) {
         router.push('/dashboard');
@@ -79,7 +82,6 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
       <div className="max-w-md w-full">
-        {/* Logo e Título */}
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
             <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center">
@@ -90,7 +92,6 @@ export default function LoginPage() {
           <p className="text-gray-600">Sistema de Gerenciamento Elite</p>
         </div>
 
-        {/* Formulário de Login */}
         <div className="bg-white rounded-lg shadow-xl p-8">
           <div className="mb-6">
             <h2 className="text-2xl font-semibold text-gray-900 mb-2">Entrar no Sistema</h2>
@@ -98,7 +99,6 @@ export default function LoginPage() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Campo Email */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                 Email
@@ -115,7 +115,6 @@ export default function LoginPage() {
               />
             </div>
 
-            {/* Campo Senha */}
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
                 Senha
@@ -142,7 +141,6 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {/* Mensagem de Erro */}
             {error && (
               <div className="flex items-center space-x-2 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700">
                 <AlertCircle className="w-5 h-5" />
@@ -150,7 +148,6 @@ export default function LoginPage() {
               </div>
             )}
 
-            {/* Botão de Login */}
             <button
               type="submit"
               disabled={isLoading}
@@ -159,9 +156,16 @@ export default function LoginPage() {
               {isLoading ? 'Entrando...' : 'Entrar'}
             </button>
           </form>
+
+          <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <p className="text-sm text-blue-700">
+              <strong>Credenciais de teste:</strong><br />
+              Email: admin@admin.com<br />
+              Senha: admin123
+            </p>
+          </div>
         </div>
 
-        {/* Footer */}
         <div className="text-center mt-8">
           <p className="text-gray-500 text-sm">
             © 2024 EliteADM. Todos os direitos reservados.
