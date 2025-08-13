@@ -190,6 +190,31 @@ Nosso objetivo é sempre priorizar o atendimento de todos os nossos alunos, cada
 - Alterações não são permitidas após o agendamento`;
   }
 
+  // Clínicas médicas - regra específica
+  if (cleanMessage.includes('clínica') || cleanMessage.includes('clinica') || cleanMessage.includes('clínicas') || cleanMessage.includes('clinicas')) {
+    return `De acordo com nossos contratos, a Autoescola Onishi não tem qualquer interferência no atendimento, horários e resultados das Clínicas Médicas credenciadas pelo Detran.
+
+**Como funciona:**
+
+• **Exames obrigatórios:** Médico e Psicotécnico são obrigatórios para primeira habilitação
+• **Agendamento:** Deve ser feito diretamente com as clínicas credenciadas
+• **Resultados:** A autoescola não interfere nos resultados ou horários
+• **Alteração:** Uma vez agendado, não é possível trocar ou alterar o agendamento
+
+**Base nos nossos documentos:**
+
+**Contrato Primeira Habilitação (Item 6):** "A Autoescola Onishi não tem qualquer interferência no atendimento, horários e resultados das Clínicas Médicas credenciadas pelo Detran."
+
+**Item 8:** "Uma vez que o candidato for agendado com o Médico e Psicólogo credenciado, ele não poderá trocar ou mudar o seu agendamento em nenhuma hipótese."
+
+**Como orientar o cliente:**
+- A autoescola não gerencia os agendamentos das clínicas
+- O cliente deve entrar em contato diretamente com a clínica
+- Alterações não são permitidas após o agendamento
+
+**Importante:** Se o cliente não conseguir falar com a clínica, ele deve tentar outros canais de contato da clínica (telefone, WhatsApp, e-mail) ou procurar outra clínica credenciada pelo Detran.`;
+  }
+
   // Taxa de reprovação
   if (cleanMessage.includes('taxa') && (cleanMessage.includes('reprova') || cleanMessage.includes('reprovação') || cleanMessage.includes('remarcação'))) {
     return `Compreendo que o cliente possa não achar justo ter que pagar a taxa de reprovação do exame prático. É uma situação que pode gerar frustração, mas é importante explicar que essa taxa está prevista em nosso contrato e cobre custos operacionais essenciais.
