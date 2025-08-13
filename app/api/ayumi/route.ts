@@ -119,6 +119,35 @@ O contrato de "PRIMEIRA HABILITAÇÃO" detalha: "Para as aulas práticas, será 
 Nosso objetivo é sempre priorizar o atendimento de todos os nossos alunos, cada um em seu processo de habilitação, conforme a disponibilidade da agenda da autoescola.`;
   }
 
+  // Cancelamento de contrato
+  if (cleanMessage.includes('cancelar') || cleanMessage.includes('cancelamento') || cleanMessage.includes('desistir') || cleanMessage.includes('desistência')) {
+    return `De acordo com nossos contratos, o cancelamento de contrato é possível, mas está sujeito a uma taxa administrativa.
+
+**Taxa de Cancelamento: R$ 300,00**
+
+**Como funciona o cancelamento:**
+
+• **Taxa obrigatória:** R$ 300,00 para emissão do termo de cancelamento
+• **Liberação do sistema:** A taxa deve ser paga para processar a liberação
+• **Reembolso:** Os valores já pagos podem ser reembolsados, dependendo do prazo
+
+**Base nos nossos documentos:**
+
+**Primeira Habilitação (Item 36):** "No ato do cancelamento de contrato, desistências ou transferência de local ou autoescola, haverá a cobrança de taxa administrativa de cancelamento de R$300,00 que deverá ser paga para que seja emitido o termo de cancelamento e a liberação do(a) CONTRATANTE no sistema."
+
+**Adição de Categoria (Item 40):** Mesma regra aplicável.
+
+**Reabilitação de CNH (Item 44):** Mesma regra aplicável.
+
+**Como solicitar o cancelamento:**
+
+1. **E-mail:** sac@autoescolaonishi.com.br
+2. **Presencial:** Na autoescola
+3. **Informações necessárias:** Nome completo, categoria de habilitação e motivo do cancelamento
+
+**Importante:** A taxa de R$ 300,00 é obrigatória para processar o cancelamento e liberar sua matrícula no sistema.`;
+  }
+
   // Adição de categoria
   if (cleanMessage.includes('adição') && cleanMessage.includes('categoria')) {
     return `Não, o cliente que busca a adição da categoria A à sua CNH não precisa fazer aulas teóricas (CFC) novamente.
