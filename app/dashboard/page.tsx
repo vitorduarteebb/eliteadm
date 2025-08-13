@@ -1,7 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useAuth } from '@/lib/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import { 
   Users, 
@@ -18,34 +16,8 @@ import {
   ArrowRight
 } from 'lucide-react';
 
-// Usuário mock para teste
-const mockUser = {
-  id: '1',
-  name: 'Administrador',
-  email: 'admin@admin.com',
-  role: 'admin',
-  isActive: true,
-  permissions: ['system.admin', 'dashboard_view', 'users_view', 'ai_use'],
-  aiUsageLimit: 1000,
-  aiUsageCount: 0,
-  aiUsageResetDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-  createdAt: new Date('2024-01-01'),
-  lastLogin: new Date(),
-};
-
 export default function DashboardPage() {
-  const { user, updateUser } = useAuth();
-  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
-
-  useEffect(() => {
-    // Simular usuário logado para teste
-    if (!user) {
-      console.log('🔧 Criando usuário mock para teste...');
-      updateUser(mockUser);
-    }
-    setIsLoading(false);
-  }, [user, updateUser]);
 
   const navigationItems = [
     {
@@ -114,7 +86,7 @@ export default function DashboardPage() {
     },
     {
       title: 'Uso de IA (Ayumi)',
-      value: `${user?.aiUsageCount || 0}/${user?.aiUsageLimit || 100}`,
+      value: '0/100',
       change: 'Disponível',
       changeType: 'neutral',
       icon: Zap,
@@ -149,18 +121,6 @@ export default function DashboardPage() {
     }
   };
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">EliteADM</h1>
-          <p className="text-gray-600">Carregando sistema...</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Header */}
@@ -179,14 +139,12 @@ export default function DashboardPage() {
             
             <div className="flex items-center space-x-4">
               <div className="text-right">
-                <p className="text-sm text-gray-500">Logado como</p>
-                <p className="font-medium text-gray-900">{user?.name || 'Administrador'}</p>
-                <p className="text-xs text-gray-500 capitalize">{user?.role || 'admin'}</p>
+                <p className="text-sm text-gray-500">Modo de Teste</p>
+                <p className="font-medium text-gray-900">Administrador</p>
+                <p className="text-xs text-gray-500 capitalize">admin</p>
               </div>
               <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-sm font-medium">
-                  {(user?.name || 'A')[0].toUpperCase()}
-                </span>
+                <span className="text-white text-sm font-medium">A</span>
               </div>
             </div>
           </div>
