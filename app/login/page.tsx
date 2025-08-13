@@ -1,76 +1,37 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '../../hooks/useAuth';
-import { Shield, Eye, EyeOff, AlertCircle } from 'lucide-react';
+import { useAuth } from '@/lib/context/AuthContext';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const router = useRouter();
-  const { login, isAuthenticated } = useAuth();
-
-  // Criar usuário admin automaticamente se não existir
-  useEffect(() => {
-    const createAdminUser = () => {
-      try {
-        const usersKey = 'users';
-        const existingUsers = JSON.parse(localStorage.getItem(usersKey) || '[]');
-        
-        // Verificar se o admin já existe
-        const adminExists = existingUsers.find((u: any) => u.email === 'admin@admin.com');
-        
-        if (!adminExists) {
-          const adminUser = {
-            id: 'admin-1',
-            name: 'Administrador EliteADM',
-            email: 'admin@admin.com',
-            password: 'admin123',
-            role: 'admin',
-            status: 'active',
-            isActive: true,
-            permissions: ['system.admin', 'dashboard_view', 'users_view', 'ai_use'],
-            createdAt: new Date().toISOString(),
-            lastLogin: null
-          };
-          
-          existingUsers.push(adminUser);
-          localStorage.setItem(usersKey, JSON.stringify(existingUsers));
-          console.log('Usuário admin criado automaticamente');
-        }
-      } catch (error) {
-        console.error('Erro ao criar usuário admin:', error);
-      }
-    };
-
-    createAdminUser();
-  }, []);
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      router.push('/dashboard');
-    }
-  }, [isAuthenticated, router]);
+  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
     setIsLoading(true);
+    setError('');
 
     try {
-      const success = await login(email, password);
+      console.log('🔐 Tentando fazer login com:', { email, password: password ? '***' : 'undefined' });
+      
+      const success = await login({ email, password });
       
       if (success) {
+        console.log('✅ Login bem-sucedido!');
         router.push('/dashboard');
       } else {
-        setError('Email ou senha incorretos');
+        console.log('❌ Login falhou');
+        setError('Credenciais inválidas');
       }
-    } catch (err) {
-      setError('Erro ao fazer login. Tente novamente.');
+    } catch (err: any) {
+      console.error('💥 Erro no login:', err);
+      setError(err.message || 'Erro ao fazer login');
     } finally {
       setIsLoading(false);
     }
@@ -78,94 +39,72 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-      <div className="max-w-md w-full">
-        {/* Logo e Título */}
-        <div className="text-center mb-8">
-          <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center">
-              <Shield className="w-8 h-8 text-white" />
-            </div>
-          </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">EliteADM</h1>
-          <p className="text-gray-600">Sistema de Gerenciamento Elite</p>
+      <div className="max-w-md w-full space-y-8">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            EliteADM
+          </h1>
+          <p className="text-gray-600">
+            Faça login para acessar o sistema
+          </p>
         </div>
 
-        {/* Formulário de Login */}
         <div className="bg-white rounded-lg shadow-xl p-8">
-          <div className="mb-6">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-2">Entrar no Sistema</h2>
-            <p className="text-gray-600">Faça login com suas credenciais</p>
-          </div>
-
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Campo Email */}
+            {error && (
+              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md">
+                {error}
+              </div>
+            )}
+
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email
+                E-mail
               </label>
               <input
                 id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="seu@email.com"
                 required
-                disabled={isLoading}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="admin@admin.com"
               />
             </div>
 
-            {/* Campo Senha */}
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
                 Senha
               </label>
-              <div className="relative">
-                <input
-                  id="password"
-                  type={showPassword ? 'text' : 'password'}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="••••••••"
-                  required
-                  disabled={isLoading}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                  disabled={isLoading}
-                >
-                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                </button>
-              </div>
+              <input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="admin123"
+              />
             </div>
 
-            {/* Mensagem de Erro */}
-            {error && (
-              <div className="flex items-center space-x-2 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700">
-                <AlertCircle className="w-5 h-5" />
-                <span className="text-sm">{error}</span>
-              </div>
-            )}
-
-            {/* Botão de Login */}
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? 'Entrando...' : 'Entrar'}
             </button>
           </form>
-        </div>
 
-        {/* Footer */}
-        <div className="text-center mt-8">
-          <p className="text-gray-500 text-sm">
-            © 2024 EliteADM. Todos os direitos reservados.
-          </p>
+          <div className="mt-6 text-center">
+            <div className="text-sm text-gray-600 mb-4">
+              <strong>Credenciais de Teste:</strong>
+            </div>
+            <div className="bg-gray-50 rounded-md p-3 text-xs text-gray-700 space-y-1">
+              <div><strong>Admin:</strong> admin@admin.com / admin123</div>
+              <div><strong>Usuário:</strong> user@portalauto.com / password</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

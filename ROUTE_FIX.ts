@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken';
 
-// Banco de dados simples em memória
 const users = [
   {
     id: '1',
@@ -37,76 +36,43 @@ export async function POST(request: NextRequest) {
   try {
     const { email, password } = await request.json();
 
-    console.log('🔍 Tentativa de login:', { email, password: password ? '***' : 'undefined' });
-
-    // Validar dados
     if (!email || !password) {
-      console.log('❌ Dados faltando:', { email: !!email, password: !!password });
       return NextResponse.json(
         { message: 'E-mail e senha são obrigatórios' },
         { status: 400 }
       );
     }
 
-    // Buscar usuário
-    const user = users.find(u => u.email === email);
-    console.log('👤 Usuário encontrado:', user ? 'Sim' : 'Não');
-
+    const user = users.find(u => u.email === email && u.password === password);
+    
     if (!user) {
-      console.log('❌ Usuário não encontrado para:', email);
       return NextResponse.json(
         { message: 'Credenciais inválidas' },
         { status: 401 }
       );
     }
 
-    // Verificar senha (comparação simples)
-    const isValidPassword = password === user.password;
-    console.log('🔐 Senha válida:', isValidPassword);
-
-    if (!isValidPassword) {
-      console.log('❌ Senha incorreta para usuário:', email);
-      return NextResponse.json(
-        { message: 'Credenciais inválidas' },
-        { status: 401 }
-      );
-    }
-
-    // Verificar se o usuário está ativo
     if (!user.isActive) {
-      console.log('❌ Usuário inativo:', email);
       return NextResponse.json(
-        { message: 'Conta desativada. Entre em contato com o administrador.' },
+        { message: 'Conta desativada' },
         { status: 403 }
       );
     }
 
-    // Atualizar último login
     user.lastLogin = new Date();
 
-    // Gerar token JWT
     const token = jwt.sign(
-      {
-        userId: user.id,
-        email: user.email,
-        role: user.role
-      },
+      { userId: user.id, email: user.email, role: user.role },
       process.env.JWT_SECRET || 'fallback-secret',
       { expiresIn: '24h' }
     );
 
-    // Remover senha da resposta
     const { password: _, ...userResponse } = user;
 
-    console.log('✅ Login bem-sucedido para:', email);
-
-    return NextResponse.json({
-      user: userResponse,
-      token,
-    });
+    return NextResponse.json({ user: userResponse, token });
 
   } catch (error) {
-    console.error('💥 Erro no login:', error);
+    console.error('Erro no login:', error);
     return NextResponse.json(
       { message: 'Erro interno do servidor' },
       { status: 500 }
