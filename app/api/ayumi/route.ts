@@ -99,6 +99,23 @@ Contratos Onishi, Adição de Categoria, Item 14.g; Reabilitação de CNH, Item 
 Isso significa que o aluno pode agendar 2 agendamentos por vez, totalizando 4 aulas. Após a realização dessas aulas, ele poderá agendar as próximas 4, e assim por diante, sempre respeitando a disponibilidade da agenda da autoescola.`;
   }
 
+  // Aulas práticas de moto - local específico
+  if ((cleanMessage.includes('aulas') || cleanMessage.includes('aula')) && (cleanMessage.includes('práticas') || cleanMessage.includes('prática')) && (cleanMessage.includes('moto') || cleanMessage.includes('moto'))) {
+    return `As aulas práticas de moto são realizadas em uma pista externa localizada no seguinte endereço:
+
+**Av Frei Macário de S João - ao lado do cemitério Gethsêmani Morumbi.**
+
+É importante que o aluno esteja ciente de que:
+
+• **A coleta da digital será feita na Autoescola**, e o aluno irá com o instrutor para o local de treinamento
+• **A escolha do local da aula é feita exclusivamente pela Autoescola** e pode ser alterada sem aviso prévio
+• **Haverá aulas práticas mesmo em dias de chuva**, sendo recomendado que o aluno traga capa de chuva
+• **As aulas serão marcadas na unidade de matrícula do aluno**, exclusivamente
+• **O uso de capacete próprio é obrigatório** para as aulas, e o aluno deve estar com calçado apropriado que se firme aos pés (chinelos, sandálias e sapatos de salto não são aceitos)
+
+**Essa informação está presente nos itens 14, 18 e 21 das seções "DAS AULAS PRÁTICAS" dos nossos contratos de Adição de Categoria, Reabilitação de CNH e Primeira Habilitação, respectivamente.**`;
+  }
+
   // Agendar todas as aulas de uma vez
   if (cleanMessage.includes('todas') && cleanMessage.includes('aulas') && (cleanMessage.includes('uma vez') || cleanMessage.includes('vez') || cleanMessage.includes('só'))) {
     return `Entendo perfeitamente o seu desejo de agendar todas as aulas práticas de uma vez para se organizar. No entanto, de acordo com os nossos protocolos e para garantir a qualidade e a disponibilidade para todos os alunos, não é possível agendar todas as aulas práticas de uma só vez.
