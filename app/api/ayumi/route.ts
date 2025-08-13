@@ -48,7 +48,7 @@ async function simulateAdaptaOneAPI(message: string): Promise<string | null> {
   // Respostas específicas baseadas no arquivo da Adapta ONE
   
   // CFC Teórico
-  if (cleanMessage.includes('cfc') && cleanMessage.includes('teórico')) {
+  if (cleanMessage.includes('cfc') && (cleanMessage.includes('teórico') || cleanMessage.includes('teorico'))) {
     return `Para a obtenção da sua primeira habilitação nas categorias A e B, o curso teórico-técnico no CFC (Centro de Formação de Condutores) possui uma carga horária total de 45 horas-aula.
 
 Cada hora-aula corresponde a 50 minutos, e a carga horária diária máxima permitida é de 5 horas-aula.
