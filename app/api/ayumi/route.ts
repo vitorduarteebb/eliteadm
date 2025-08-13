@@ -117,7 +117,9 @@ Isso significa que o aluno pode agendar 2 agendamentos por vez, totalizando 4 au
   }
 
   // Agendar todas as aulas de uma vez
-  if (cleanMessage.includes('todas') && cleanMessage.includes('aulas') && (cleanMessage.includes('uma vez') || cleanMessage.includes('vez') || cleanMessage.includes('só'))) {
+  if ((cleanMessage.includes('todas') && cleanMessage.includes('aulas') && (cleanMessage.includes('uma vez') || cleanMessage.includes('vez') || cleanMessage.includes('só'))) || 
+      (cleanMessage.includes('agendar') && cleanMessage.includes('todas') && cleanMessage.includes('aulas')) ||
+      (cleanMessage.includes('todas') && cleanMessage.includes('aulas') && cleanMessage.includes('direto'))) {
     return `Entendo perfeitamente o seu desejo de agendar todas as aulas práticas de uma vez para se organizar. No entanto, de acordo com os nossos protocolos e para garantir a qualidade e a disponibilidade para todos os alunos, não é possível agendar todas as aulas práticas de uma só vez.
 
 Nosso sistema de agendamento é planejado para otimizar a agenda da autoescola e assegurar que todos os alunos tenham acesso justo às aulas.
