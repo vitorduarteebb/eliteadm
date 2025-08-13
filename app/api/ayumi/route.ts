@@ -148,6 +148,74 @@ Nosso objetivo é sempre priorizar o atendimento de todos os nossos alunos, cada
 **Importante:** A taxa de R$ 300,00 é obrigatória para processar o cancelamento e liberar sua matrícula no sistema.`;
   }
 
+  // Exame médico e psicotécnico
+  if (cleanMessage.includes('médico') || cleanMessage.includes('psicotécnico') || cleanMessage.includes('exame') && (cleanMessage.includes('médico') || cleanMessage.includes('psicotécnico'))) {
+    return `De acordo com nossos contratos, a Autoescola Onishi não tem qualquer interferência no atendimento, horários e resultados das Clínicas Médicas credenciadas pelo Detran.
+
+**Como funciona:**
+
+• **Exames obrigatórios:** Médico e Psicotécnico são obrigatórios para primeira habilitação
+• **Agendamento:** Deve ser feito diretamente com as clínicas credenciadas
+• **Resultados:** A autoescola não interfere nos resultados ou horários
+• **Alteração:** Uma vez agendado, não é possível trocar ou alterar o agendamento
+
+**Base nos nossos documentos:**
+
+**Contrato Primeira Habilitação (Item 6):** "A Autoescola Onishi não tem qualquer interferência no atendimento, horários e resultados das Clínicas Médicas credenciadas pelo Detran."
+
+**Item 8:** "Uma vez que o candidato for agendado com o Médico e Psicólogo credenciado, ele não poderá trocar ou mudar o seu agendamento em nenhuma hipótese."
+
+**Como orientar o cliente:**
+- A autoescola não gerencia os agendamentos das clínicas
+- O cliente deve entrar em contato diretamente com a clínica
+- Alterações não são permitidas após o agendamento`;
+  }
+
+  // Taxa de reprovação
+  if (cleanMessage.includes('taxa') && (cleanMessage.includes('reprova') || cleanMessage.includes('reprovação') || cleanMessage.includes('remarcação'))) {
+    return `Compreendo que o cliente possa não achar justo ter que pagar a taxa de reprovação do exame prático. É uma situação que pode gerar frustração, mas é importante explicar que essa taxa está prevista em nosso contrato e cobre custos operacionais essenciais.
+
+**Como explicar ao cliente:**
+
+**Reconheça a frustração:** "Entendo sua frustração. Ninguém gosta de ser reprovado e ter custos adicionais."
+
+**Explique a previsão contratual:** "Conforme estabelecido em nosso contrato, a taxa de remarcação é aplicada em caso de reprovação no exame prático."
+
+**Justifique os custos envolvidos:**
+• Disponibilização do veículo da autoescola
+• Presença do instrutor
+• Reagendamento junto ao Detran
+• Taxas administrativas do Detran
+
+**Reforce o compromisso:** "Essa taxa nos permite manter a qualidade dos nossos serviços e garantir que você tenha uma nova oportunidade com todo o suporte necessário."
+
+**Prazo para remarcação:** Após o pagamento, há um prazo para a remarcação da nova prova prática (geralmente 15 dias).
+
+**Base nos nossos documentos:**
+Contrato de Primeira Habilitação, item sobre taxa de remarcação do exame prático.`;
+  }
+
+  // RG esquecido para aula prática
+  if (cleanMessage.includes('rg') && (cleanMessage.includes('esqueceu') || cleanMessage.includes('esqueceu') || cleanMessage.includes('esqueci') || cleanMessage.includes('esqueci'))) {
+    return `De acordo com nossos contratos e protocolos, se o aluno esqueceu o RG para a aula prática, ele não poderá realizar a aula.
+
+**O que acontece:**
+
+• **Não realização da aula:** O aluno somente poderá fazer a aula prática se estiver em posse da LADV e do RG ou outro documento de identificação com foto válido
+• **Documentos aceitos:** RG Digital, e-Título com foto atualizada e CNH Digital oficial no aplicativo
+• **Não aceitos:** Fotos de documentos ou documentos fora dos aplicativos nativos
+• **Registro de falta:** Sem o documento, a aula será registrada como falta e gerará débito
+
+**Valores das aulas perdidas:**
+• **Carro ou moto:** R$ 70,00 por aula
+• **Ônibus:** R$ 100,00 por aula
+• **Valores podem ser alterados** sem aviso prévio (consultar quadro de avisos)
+
+**Lembrete importante:** Para as aulas práticas, o aluno também deve estar com calçado apropriado que se firme aos pés. Caso contrário, também será considerado falta.
+
+**Fonte:** Contratos Onishi, seção "DAS AULAS PRÁTICAS", itens 17 e 17.a.`;
+  }
+
   // Adição de categoria
   if (cleanMessage.includes('adição') && cleanMessage.includes('categoria')) {
     return `Não, o cliente que busca a adição da categoria A à sua CNH não precisa fazer aulas teóricas (CFC) novamente.
