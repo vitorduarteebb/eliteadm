@@ -215,6 +215,31 @@ Nosso objetivo é sempre priorizar o atendimento de todos os nossos alunos, cada
 **Importante:** Se o cliente não conseguir falar com a clínica, ele deve tentar outros canais de contato da clínica (telefone, WhatsApp, e-mail) ou procurar outra clínica credenciada pelo Detran.`;
   }
 
+  // LADV esquecida - regra específica
+  if (cleanMessage.includes('ladv') || cleanMessage.includes('licença') || cleanMessage.includes('licenca') || cleanMessage.includes('aprendizagem')) {
+    return `Quando o cliente não traz a LADV (Licença para Aprendizagem de Direção Veicular) para a aula prática, ele não poderá realizar a aula.
+
+**Conforme o nosso Contrato de Prestação de Serviços, na seção "DAS AULAS PRÁTICAS", item 17:**
+
+"Somente poderá fazer a aula prática no veículo o aluno que estiver em posse da LADV e do RG ou documento com foto."
+
+"Sem estes documentos o aluno não poderá fazer a aula sob nenhuma hipótese e será marcado falta, gerando débitos por aula perdida/marcada."
+
+**Portanto, você deve orientar o cliente que:**
+
+• **Sem a LADV, a aula não poderá ser ministrada**
+• **Será registrada como falta**
+• **Gerará um débito para ele**
+
+**É fundamental que o aluno sempre porte:**
+• **LADV (Licença para Aprendizagem de Direção Veicular)**
+• **Documento de identificação com foto (RG ou CNH Digital oficial no aplicativo)**
+
+**Para todas as aulas práticas.**
+
+**Base nos nossos documentos:** Contratos Onishi, seção "DAS AULAS PRÁTICAS", item 17.`;
+  }
+
   // Taxa de reprovação
   if (cleanMessage.includes('taxa') && (cleanMessage.includes('reprova') || cleanMessage.includes('reprovação') || cleanMessage.includes('remarcação'))) {
     return `Compreendo que o cliente possa não achar justo ter que pagar a taxa de reprovação do exame prático. É uma situação que pode gerar frustração, mas é importante explicar que essa taxa está prevista em nosso contrato e cobre custos operacionais essenciais.
