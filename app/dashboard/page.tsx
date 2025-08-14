@@ -13,7 +13,9 @@ import {
   Zap,
   UserCheck,
   Cog,
-  ArrowRight
+  ArrowRight,
+  Brain,
+  MessageSquare
 } from 'lucide-react';
 
 export default function DashboardPage() {
@@ -28,6 +30,15 @@ export default function DashboardPage() {
       color: 'purple',
       bgColor: 'purple-100',
       iconColor: 'purple-600'
+    },
+    {
+      name: 'Treinamento da Ayumi',
+      description: 'Aperfeiçoe e corrija a IA com feedback dos usuários',
+      href: '/dashboard/ayumi-training',
+      icon: Brain,
+      color: 'indigo',
+      bgColor: 'indigo-100',
+      iconColor: 'indigo-600'
     },
     {
       name: 'Gerenciar Usuários',
@@ -107,7 +118,8 @@ export default function DashboardPage() {
     { id: 2, action: 'Relatório mensal gerado', user: 'Maria Santos', time: '15 min atrás', type: 'report' },
     { id: 3, action: 'Configuração atualizada', user: 'Admin Sistema', time: '1 hora atrás', type: 'config' },
     { id: 4, action: 'Backup automático realizado', user: 'Sistema', time: '2 horas atrás', type: 'system' },
-    { id: 5, action: 'Nova permissão criada', user: 'Admin Sistema', time: '3 horas atrás', type: 'permission' }
+    { id: 5, action: 'Nova permissão criada', user: 'Admin Sistema', time: '3 horas atrás', type: 'permission' },
+    { id: 6, action: 'Feedback da Ayumi implementado', user: 'Admin Sistema', time: '4 horas atrás', type: 'ai' }
   ];
 
   const getActivityIcon = (type: string) => {
@@ -117,6 +129,7 @@ export default function DashboardPage() {
       case 'config': return <Settings className="h-4 w-4 text-purple-500" />;
       case 'system': return <Shield className="h-4 w-4 text-indigo-500" />;
       case 'permission': return <Shield className="h-4 w-4 text-orange-500" />;
+      case 'ai': return <Brain className="h-4 w-4 text-indigo-500" />;
       default: return <FileText className="h-4 w-4 text-gray-500" />;
     }
   };
