@@ -1,0 +1,52 @@
+🚀 COMANDO ÚNICO PARA DEPLOY NA VPS - PORTALAUTO
+
+COPIAR E COLAR ESTE COMANDO EM UM TERMINAL EXTERNO (Git Bash, WSL, ou PowerShell):
+
+================================================================================
+
+ssh root@45.79.8.82 "cd /var/www/portalauto && cp -r . ../portalauto-backup-\$(date +%Y%m%d-%H%M%S) && echo 'Backup criado com sucesso!' && echo 'Aguardando upload do arquivo portalauto-update.zip...' && echo 'Após fazer upload, execute: unzip portalauto-update.zip && npm install && npm run build && pm2 restart portalauto'"
+
+================================================================================
+
+INSTRUÇÕES COMPLETAS:
+
+1. EXECUTE O COMANDO ACIMA para conectar à VPS
+2. FAÇA UPLOAD do arquivo portalauto-update.zip (211 KB) para a VPS
+   - Use o painel da VPS ou arraste o arquivo
+   - Ou use: scp portalauto-update.zip root@45.79.8.82:/var/www/portalauto/
+3. NA VPS, execute:
+   cd /var/www/portalauto
+   unzip portalauto-update.zip
+   npm install
+   npm run build
+   pm2 restart portalauto
+4. Configure as variáveis de ambiente:
+   nano .env.local
+   
+   Adicione:
+   OPENAI_API_KEY=sua_chave_api_aqui
+   BRADIAL_API_KEY=8LjU6QckjMey6FDt7mDEj7VU
+   BRADIAL_BASE_URL=https://api.bradial.com/v1
+   NODE_ENV=production
+
+5. Teste a aplicação:
+   curl http://localhost:3000
+   pm2 status
+   pm2 logs portalauto --lines 50
+
+================================================================================
+
+FUNCIONALIDADES IMPLEMENTADAS:
+✅ Ayumi GPT com OpenAI
+✅ Kanban editável com drag & drop
+✅ Módulo de treinamento real
+✅ Integração Bradial
+✅ Novas páginas de usuários
+✅ Sistema completo de feedback
+
+================================================================================
+
+ARQUIVO DE ATUALIZAÇÃO: portalauto-update.zip (211 KB)
+LOCALIZAÇÃO: C:\Users\oem\OneDrive\Área de Trabalho\PortalAuto\
+
+================================================================================

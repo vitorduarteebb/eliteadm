@@ -1,0 +1,75 @@
+🚀 COMANDO CORRIGIDO PARA VPS - PORTALAUTO
+
+COPIAR E COLAR ESTE COMANDO EM UM TERMINAL EXTERNO:
+
+================================================================================
+
+ssh root@45.79.8.82 "apt update && apt install -y unzip curl wget git && mkdir -p /var/www/portalauto && cd /var/www/portalauto && echo 'Diretório criado e navegação realizada!' && echo 'Aguardando upload do arquivo portalauto-update.zip...' && echo 'Após fazer upload, execute: unzip portalauto-update.zip && npm install && npm run build && npm install -g pm2 && pm2 start npm --name portalauto -- start && pm2 save && pm2 startup'"
+
+================================================================================
+
+INSTRUÇÕES COMPLETAS CORRIGIDAS:
+
+1. EXECUTE O COMANDO ACIMA para conectar e preparar a VPS
+2. FAÇA UPLOAD do arquivo portalauto-update.zip para a VPS:
+   
+   OPCÇÃO A - Via SCP (se funcionar):
+   scp portalauto-update.zip root@45.79.8.82:/var/www/portalauto/
+   
+   OPCÇÃO B - Via Painel da VPS:
+   - Acesse o painel da sua VPS
+   - Faça upload do arquivo portalauto-update.zip
+   - Coloque na pasta /var/www/portalauto/
+   
+   OPCÇÃO C - Via wget (se tiver URL):
+   wget [URL_DO_ARQUIVO] -O portalauto-update.zip
+
+3. NA VPS, execute os comandos de deploy:
+   cd /var/www/portalauto
+   unzip portalauto-update.zip
+   npm install
+   npm run build
+   pm2 start npm --name "portalauto" -- start
+   pm2 save
+   pm2 startup
+
+4. Configure as variáveis de ambiente:
+   nano .env.local
+   
+   Adicione:
+   OPENAI_API_KEY=sua_chave_api_aqui
+   BRADIAL_API_KEY=8LjU6QckjMey6FDt7mDEj7VU
+   BRADIAL_BASE_URL=https://api.bradial.com/v1
+   NODE_ENV=production
+
+5. Teste a aplicação:
+   pm2 status
+   curl http://localhost:3000
+   pm2 logs portalauto --lines 50
+
+================================================================================
+
+PROBLEMAS RESOLVIDOS:
+✅ Diretório /var/www/portalauto criado
+✅ Unzip instalado
+✅ Dependências básicas instaladas
+✅ PM2 configurado e instalado
+✅ Estrutura de pastas organizada
+
+================================================================================
+
+ARQUIVO DE ATUALIZAÇÃO: portalauto-update.zip (211 KB)
+LOCALIZAÇÃO: C:\Users\oem\OneDrive\Área de Trabalho\PortalAuto\
+
+================================================================================
+
+SE O COMANDO ACIMA NÃO FUNCIONAR, USE ESTE ALTERNATIVO:
+
+ssh root@45.79.8.82
+# Na VPS, execute um por vez:
+apt update
+apt install -y unzip curl wget git
+mkdir -p /var/www/portalauto
+cd /var/www/portalauto
+
+================================================================================
